@@ -185,6 +185,25 @@ body{
   animation:float2 5s ease-in-out infinite;
 }
 
+.flower {
+  position: absolute;
+  top: 220px;
+  left: 300px;
+}
+
+.books {
+  position:absolute;
+
+  width:200px;
+
+  right:150px;
+  top: 340px;
+
+  transform:rotate(-24deg);
+
+  animation:float2 5s ease-in-out infinite;
+}
+
 /* FLOAT */
 
 @keyframes float{

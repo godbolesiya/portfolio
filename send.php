@@ -18,7 +18,7 @@ try {
     $mail->Username   = 'siyagodbole@gmail.com';
 
     // Gmail App Password
-    $mail->Password   = 'agrd qgtp gdis gdbf';
+    $mail->Password   = 'bfdk gzmz nuzd wobg';
 
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
