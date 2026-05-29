@@ -20,73 +20,33 @@ updateTime();
 
 setInterval(updateTime, 1000);
 
-/* ELEMENTS */
 
-const bear =
-document.getElementById("bear");
+window.onload = function(){
 
-const music =
-document.getElementById("bearMusic");
+  const capy =
+  document.getElementById("capyImg");
 
-/* HOVER */
+  const music =
+  document.getElementById("capyMusic");
 
-if (bear) {
-  bear.addEventListener("mouseenter", () => {
+  capy.addEventListener("mouseenter", function(){
 
-    /* CHANGE IMAGE */
+    capy.src =
+    "./image-removebg-preview (2).png";
 
-    bear.src = "bear2.png";
-
-    /* PLAY MUSIC */
-
-    if (music) {
-      music.currentTime = 0;
-      music.play();
-    }
+    music.play();
 
   });
 
-  /* LEAVE */
+  capy.addEventListener("mouseleave", function(){
 
-  bear.addEventListener("mouseleave", () => {
+    capy.src =
+    "./image-removebg-preview (1).png";
 
-    /* BACK TO NORMAL */
+    music.pause();
 
-    bear.src = "bear1.png";
-
-    /* STOP MUSIC */
-
-    if (music) {
-      music.pause();
-      music.currentTime = 0;
-    }
+    music.currentTime = 0;
 
   });
+
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-
-  const capy = document.getElementById("capyImg");
-  const capyMusic = document.getElementById("capyMusic");
-
-  if (capy) {
-    capy.addEventListener("mouseover", function(){
-      capy.src = "image-removebg-preview (2).png";
-      if (capyMusic) {
-        capyMusic.currentTime = 0;
-        capyMusic.play().catch(() => {
-          // Ignore play errors from browser autoplay restrictions.
-        });
-      }
-    });
-
-    capy.addEventListener("mouseout", function(){
-      capy.src = "image-removebg-preview (1).png";
-      if (capyMusic) {
-        capyMusic.pause();
-        capyMusic.currentTime = 0;
-      }
-    });
-  }
-
-});
