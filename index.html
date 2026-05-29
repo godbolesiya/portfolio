@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+  <div class="container">
+
+    <!-- NAVBAR -->
+    <div class="nav-wrapper">
+
+      <div class="profile">
+        <img src="image copy.png">
+      </div>
+
+      <div class="navbar">
+
+        <a class="active" href="#work">Projects</a>
+        <a href="#about">About</a>
+        <a href="#">Contact</a>
+
+      </div>
+
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <img src="9b5e4682619c0ecf60dab15649cd32fc-removebg-preview.png" class="camera">
+
+      <div class="hero-text">
+
+        <h1>
+          Hi, I am Siya Godbole.<br>
+          Welcome to my little creative corner.
+        </h1>
+
+      </div>
+
+      <img src="aa5581f1bc232a1104f947b05526f001-removebg-preview.png" class="airpods">
+
+
+    </section>
+
+  </div>
+
+  <!-- TABLET -->
+
+<div class="tablet">
+
+  <div class="tablet-screen">
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+      <div class="camera-dot"></div>
+
+      <div class="top-bar-right">
+        <div class="status-icon battery"><span></span></div>
+      </div>
+
+    </div>
+
+    <!-- SCREEN CONTENT -->
+
+    <div class="screen-content">
+
+      <div class="tab-box">
+
+        <!-- TEXT -->
+
+  <h1>PORT<br>FOLIO</h1>
+
+  
+  <!-- CAPY IMAGE -->
+
+  <img src="image-removebg-preview (1).png" class="capy" id="capyImg">
+
+  <audio id="capyMusic" preload="auto" loop>
+    <source 
+  src="ytmp3free.cc_hatachi-no-koi-youtubemp3free.org.mp3"
+  type="audio/mpeg"
+>
+    Your browser does not support the audio element.
+  </audio>
+
+  <!--<img
+  src="image-removebg-preview (2).png"
+  class="bear"
+  id="bear"
+/>
+
+<audio id="bearMusic">
+
+  <source
+    src="music.mp3"
+    type="audio/mpeg"
+  >
+
+</audio>-->
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+
+function updateTime() {
+
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12 || 12;
+
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+
+  const currentTime = `${hours}:${minutes} ${ampm}`;
+
+  document.getElementById("time").innerText = currentTime;
+}
+
+updateTime();
+
+setInterval(updateTime, 1000);
+
+
+
+</script>
+
+
+<!-- WORK SECTION -->
+
+<section class="work-section" id="work">
+
+  <!-- <img src="image copy.png" class="work-bear"> -->
+
+  <h1 class="work-title">Projects</h1>
+
+  <!-- GRID -->
+
+  <div class="work-grid">
+
+    <!-- CARD 1 -->
+
+    <div class="work-card">
+
+      <img src="Slide 16_9 - 35.jpg">
+
+      <h2>Student Expenses Tracking App</h2>
+
+      <p>
+        A mobile app designed to help students manage their daily expenses and budget effectively.
+      </p>
+
+      <div class="tags">
+        <span>App Design</span>
+        <span>UI/UX</span>
+      </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="work-card">
+
+      <img src="Slide 16_9 - 37.jpg">
+
+      <h2>Clothing Renting App</h2>
+
+      <p>
+        A mobile app designed to facilitate the renting of clothing items.
+      </p>
+
+      <div class="tags">
+        <span>App Design</span>
+        <span>UI/UX</span>
+      </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="work-card">
+
+      <img src="Slide 16_9 - 36.jpg">
+
+      <h2>Thrifting App</h2>
+
+      <p>
+        A mobile app designed for users to discover and purchase second-hand clothing.
+      </p>
+
+      <div class="tags">
+        <span>App Design</span>
+        <span>UI/UX</span>
+      </div>
+
+    </div>
+
+    <!-- CARD 4 -->
+
+    <div class="work-card">
+
+      <img src="Physical Ergonomics (2).jpg">
+
+      <h2> Ergonomics </h2>
+
+      <p>
+        A project focused on designing ergonomic solutions for workspace setups to enhance comfort and productivity.
+      </p>
+
+      <div class="tags">
+        <span> Ergonomics </span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT SECTION -->
+
+
+<section class="about" id="about">
+
+  <!-- TITLE -->
+
+  <h1 class="about-title">
+    About Me
+  </h1>
+
+  <!-- POLAROID -->
+
+  <div class="polaroid">
+
+    <div class="tape"></div>
+
+    <img src="image.png" alt="profile">
+
+
+  </div>
+
+  <!-- TEXT -->
+
+<p class="about-para">
+
+  <span style="animation-delay: 0s">Hi!</span>
+  <span style="animation-delay: 0.05s">I’m</span>
+  <span style="animation-delay: 0.1s">Siya</span>
+  <span style="animation-delay: 0.15s">Godbole,</span>
+  <span style="animation-delay: 0.2s">a</span>
+  <span style="animation-delay: 0.25s">UI/UX</span>
+  <span style="animation-delay: 0.3s">and</span>
+  <span style="animation-delay: 0.35s">design</span>
+  <span style="animation-delay: 0.4s">student</span>
+  <span style="animation-delay: 0.45s">who</span>
+  <span style="animation-delay: 0.5s">loves</span>
+  <span style="animation-delay: 0.55s">creating</span>
+  <span style="animation-delay: 0.6s">playful</span>
+  <span style="animation-delay: 0.65s">and</span>
+  <span style="animation-delay: 0.7s">interactive</span>
+  <span style="animation-delay: 0.75s">digital</span>
+  <span style="animation-delay: 0.8s">experiences.</span>
+</p>
+
+<section class="superpowers">
+
+  <!-- CENTER -->
+
+  <div class="center-content">
+
+    <img src="image copy.png" class="skill-bear">
+
+    <h1>Skills</h1>
+
+  </div>
+
+  <!-- TAGS -->
+
+  <div class="tag tag1">Design Systems</div>
+
+  <div class="tag tag2">Wireframings</div>
+
+  <div class="tag tag3">Design Research</div>
+
+  <div class="tag tag4">User Interface Design</div>
+
+  <div class="tag tag5">Usability Testing</div>
+
+  <div class="tag tag6">Figma</div>
+
+  <div class="tag tag7">HTML/CSS</div>
+
+  <div class="tag tag8">Visual Design</div>
+
+</section>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section" id="contact">
+   <form action="send.php" method="POST"></form>
+
+    <div class="contact-card">
+
+        <img src="c029ecc8-388f-4457-9799-15c0986f871b.png" class="mail-sticker">
+
+        <h1>Contact</h1>
+
+        <p>
+            I'd love to connect with you!
+        </p>
+
+        <form class="contact-form">
+
+            <input 
+            type="text" 
+            placeholder="Your Name"
+            required>
+
+            <input 
+            type="email" 
+            placeholder="Your Email"
+            required>
+
+            <input 
+            type="text" 
+            placeholder="Subject"
+            required>
+
+            <textarea 
+            placeholder="Write your message..."
+            rows="5"
+            required></textarea>
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+
+</section>
+
+</body>
+</html>
