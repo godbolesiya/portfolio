@@ -1,43 +1,3 @@
-<?php
-$successMessage = '';
-$errorMessage = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $subject = trim($_POST['subject'] ?? '');
-    $message = trim($_POST['message'] ?? '');
-
-    if ($name === '' || $email === '' || $subject === '' || $message === '') {
-        $errorMessage = 'Please fill in all fields.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessage = 'Please enter a valid email address.';
-    } else {
-        $to = 'your-email@example.com';
-        $mailSubject = "Portfolio contact from $name: $subject";
-        $mailBody = "Name: $name\nEmail: $email\nSubject: $subject\n\nMessage:\n$message\n";
-        $headers = "From: $name <$email>\r\nReply-To: $email\r\n";
-
-        if (mail($to, $mailSubject, $mailBody, $headers)) {
-            $successMessage = 'Thanks! Your message has been sent.';
-        } else {
-            $logEntry = sprintf(
-                "[%s] %s <%s> | %s\n%s\n\n",
-                date('Y-m-d H:i:s'),
-                $name,
-                $email,
-                $subject,
-                $message
-            );
-            file_put_contents(__DIR__ . '/contact-log.txt', $logEntry, FILE_APPEND | LOCK_EX);
-            $successMessage = 'Your message could not be sent by email, but it was saved locally.';
-        }
-
-        $_POST = [];
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
+
 
   <div class="container">
 
@@ -70,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <a class="active" href="#work">Projects</a>
         <a href="#about">About</a>
-        <a href="#">Contact</a>
+        <a href="#contact">Contacts</a>
 
       </div>
 
@@ -91,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
 
       <img src="aa5581f1bc232a1104f947b05526f001-removebg-preview.png" class="airpods">
+      
 
 
     </section>
@@ -109,32 +69,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="camera-dot"></div>
 
+      <div class="top-bar-right">
+        <div class="status-icon battery"><span></span></div>
+      </div>
+
     </div>
-    
+
+    <div class="time">11:52 PM</div>
 
     <!-- SCREEN CONTENT -->
 
+
     <div class="screen-content">
 
-      <p class="screen-time" id="time"></p>
+      <div class="tab-box">
 
-     <!-- TAB CONTENT -->
-
-<div class="tab-box">
-
-  <!-- TEXT -->
+        <!-- TEXT -->
 
   <h1>PORT<br>FOLIO</h1>
 
   
   <!-- CAPY IMAGE -->
 
-  <img src="image-removebg-preview (1).png" class="capy" id="capyImg">
+<img src="image-removebg-preview (1).png" class="capy" id="capyImg">
 
-  <audio id="capyMusic" preload="auto" loop>
-    <source src="ytmp3free.cc_hatachi-no-koi-youtubemp3free.org.mp3"audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<audio id="capyMusic">
+  <source src="ytmp3free.cc_hatachi-no-koi-youtubemp3free.org.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const capy = document.getElementById("capyImg");
+const music = document.getElementById("capyMusic");
+
+capy.addEventListener("mouseover", function () {
+    music.play();
+});
+
+capy.addEventListener("mouseout", function () {
+    music.pause();
+    music.currentTime = 0;
+});
+</script>
 
   <!--<img
   src="image-removebg-preview (2).png"
@@ -151,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </audio>-->
 
-</div>
+      </div>
 
     </div>
 
@@ -185,6 +160,8 @@ updateTime();
 
 setInterval(updateTime, 1000);
 
+
+
 </script>
 
 
@@ -204,7 +181,7 @@ setInterval(updateTime, 1000);
 
     <div class="work-card">
 
-      <img src="project1.jpg">
+      <img src="Slide 16_9 - 35.jpg">
 
       <h2>Student Expenses Tracking App</h2>
 
@@ -223,7 +200,7 @@ setInterval(updateTime, 1000);
 
     <div class="work-card">
 
-      <img src="project2.jpg">
+      <img src="Slide 16_9 - 37.jpg">
 
       <h2>Clothing Renting App</h2>
 
@@ -242,7 +219,7 @@ setInterval(updateTime, 1000);
 
     <div class="work-card">
 
-      <img src="project3.jpg">
+      <img src="Slide 16_9 - 36.jpg">
 
       <h2>Thrifting App</h2>
 
@@ -261,7 +238,7 @@ setInterval(updateTime, 1000);
 
     <div class="work-card">
 
-      <img src="project4.jpg">
+      <img src="Physical Ergonomics (2).jpg">
 
       <h2> Ergonomics </h2>
 
@@ -341,29 +318,32 @@ setInterval(updateTime, 1000);
 
   <div class="tag tag1">Design Systems</div>
 
-  <div class="tag tag2">Experience Design</div>
+  <div class="tag tag2">Wireframings</div>
 
   <div class="tag tag3">Design Research</div>
 
   <div class="tag tag4">User Interface Design</div>
 
-  <div class="tag tag5">Prototyping</div>
+  <div class="tag tag5">Usability Testing</div>
 
-  <div class="tag tag6">Branding</div>
+  <div class="tag tag6">Figma</div>
 
-  <div class="tag tag7">Game UI/UX</div>
+  <div class="tag tag7">HTML/CSS</div>
 
   <div class="tag tag8">Visual Design</div>
+
+</section>
 
 </section>
 
 <!-- CONTACT SECTION -->
 
 <section class="contact-section" id="contact">
+   <form action="send.php" method="POST"></form>
 
     <div class="contact-card">
 
-        <img src="capy-mail.png" class="mail-sticker">
+        <img src="c029ecc8-388f-4457-9799-15c0986f871b.png" class="mail-sticker">
 
         <h1>Contact</h1>
 
@@ -371,46 +351,70 @@ setInterval(updateTime, 1000);
             I'd love to connect with you!
         </p>
 
-        <?php if ($successMessage): ?>
-            <div class="alert success"><?= htmlspecialchars($successMessage) ?></div>
-        <?php endif; ?>
+        <form class="contact-form">
 
-        <?php if ($errorMessage): ?>
-            <div class="alert error"><?= htmlspecialchars($errorMessage) ?></div>
-        <?php endif; ?>
-
-        <form class="contact-form" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
             <input 
             type="text" 
-            name="name"
-            placeholder="Your Name"
-            required
-            value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
+            placeholder="Your Name" name="name"
+            required>
 
             <input 
             type="email" 
-            name="email"
-            placeholder="Your Email"
-            required
-            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+            placeholder="Your Email" name="email"
+            required>
 
             <input 
             type="text" 
-            name="subject"
-            placeholder="Subject"
-            required
-            value="<?= htmlspecialchars($_POST['subject'] ?? '') ?>">
+            placeholder="Subject" name="subject"
+            required>
 
             <textarea 
-            name="message"
             placeholder="Write your message..."
             rows="5"
-            required><?= htmlspecialchars($_POST['message'] ?? '') ?></textarea>
+            name="message"
+            required></textarea>
+
+            <button type="submit" name="submit"> 
+           
+                Send Message  
+            </button>
 
         </form>
 
     </div>
 
+
 </section>
 
+<div class="cursor-dot"></div>
+
+<script>
+const cursor = document.querySelector(".cursor-dot");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animate() {
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
+
+    cursor.style.left = currentX + "px";
+    cursor.style.top = currentY + "px";
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
 </html>
+

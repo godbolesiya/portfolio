@@ -1,57 +1,43 @@
 <?php
-
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Composer autoload
+//Load Composer's autoloader (created by composer, not included with PHPMailer)
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
+//Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'siyagodbole@gmail.com';                     //SMTP username
+    $mail->Password   = 'agrd qgtp gdis gdbf';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    // SMTP Configuration
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
+    //Recipients
+    $mail->setFrom('siyagodbole@gmail.com', 'index.html');
+    $mail->addAddress('strawberry098098@gmail.com', 'Portfolio');     //Add a recipient
+    
+    
 
-    // Your Gmail
-    $mail->Username   = 'siyagodbole@gmail.com';
-
-    // Gmail App Password
-    $mail->Password   = 'bfdk gzmz nuzd wobg';
-
-    $mail->SMTPSecure = 'tls';
-    $mail->Port       = 587;
-
-    // Sender
-    $mail->setFrom('siyagodbolegmail@gmail.com', 'Contact Form');
-
-    // Receiver
-    $mail->addAddress('strawberry098098@gmail.com');
-
-    // Get Form Data
-    $name    = $_POST['name'];
-    $email   = $_POST['email'];
-    $message = $_POST['message'];
-
-    // Email Content
-    $mail->isHTML(true);
-    $mail->Subject = 'New Contact Form Message';
-
-    $mail->Body = "
-        <h3>Contact Form Details</h3>
-        <p><b>Name:</b> $name</p>
-        <p><b>Email:</b> $email</p>
-        <p><b>Message:</b><br>$message</p>
-    ";
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Text';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+  
 
     $mail->send();
-
-    echo "Email Sent Successfully";
-
+    echo 'Message has been sent';
 } catch (Exception $e) {
-
-    echo "Email Failed: {$mail->ErrorInfo}";
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-?>

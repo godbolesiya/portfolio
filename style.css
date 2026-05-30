@@ -185,24 +185,7 @@ body{
   animation:float2 5s ease-in-out infinite;
 }
 
-.flower {
-  position: absolute;
-  top: 220px;
-  left: 300px;
-}
 
-.books {
-  position:absolute;
-
-  width:200px;
-
-  right:150px;
-  top: 340px;
-
-  transform:rotate(-24deg);
-
-  animation:float2 5s ease-in-out infinite;
-}
 
 /* FLOAT */
 
@@ -260,6 +243,8 @@ margin-right:auto;
   position:relative;
 }
 
+
+
 /* SCREEN */
 
 .tablet-screen{
@@ -275,7 +260,19 @@ margin-right:auto;
   overflow:hidden;
 }
 
+.time{
+  font-size:22px;
+  text-align:center;
+
+  color:#646464;
+
+ 
+
+  font-family:'Nunito', sans-serif;
+}
+
 /* TOP BAR */
+
 
 .top-bar{
   width:100%;
@@ -439,7 +436,7 @@ margin-right:auto;
 
   text-align:center;
 
-  padding-bottom:40px;
+  padding-bottom:150px;
 }
 
 /* TIME */
@@ -578,6 +575,8 @@ margin-right:auto;
     transform:scale(1);
   }
 }
+
+
 
 
 /* ABOUT SECTION */
@@ -1310,6 +1309,7 @@ body {
 .work-card:hover{
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  background:#fefbf4;
 }
 
 .work-card:hover::after{
@@ -1594,12 +1594,15 @@ body {
   border-radius:20px;
 
   margin:auto;
+
+  margin-top:40px;
 }
 
 /* TEXT */
 
 .tab-box h1{
   text-align:center;
+  
 
   font-size:120px;
 
@@ -1608,8 +1611,10 @@ body {
   color:#AAA28D;
 
   font-family:'Baloo 2', cursive;
+  padding-top:0px;
 
-  margin-top:60px;
+  margin-top:40px;
+  position:center;
 }
 
 /* CAPY */
@@ -1617,11 +1622,13 @@ body {
 .capy{
   position:absolute;
 
+  position top:180px;
+
   width:260px;
 
   right:-80px;
 
-  bottom:-50px;
+  bottom:-100px;
 
   transition:0.4s ease;
 
@@ -1679,3 +1686,17 @@ body {
   }
 }
 
+body{
+    cursor: none;
+}
+
+.cursor-dot{
+    width: 14px;
+    height: 14px;
+    background: #68675f;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}

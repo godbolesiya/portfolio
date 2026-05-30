@@ -1,52 +1,67 @@
-function updateTime() {
+window.addEventListener("DOMContentLoaded", () => {
 
-  const now = new Date();
+  /* ---------------- TIME ---------------- */
 
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
+  function updateTime() {
+    const now = new Date();
 
-  const ampm = hours >= 12 ? 'PM' : 'AM';
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
 
-  hours = hours % 12 || 12;
+    const ampm = hours >= 12 ? "PM" : "AM";
 
-  minutes = minutes < 10 ? '0' + minutes : minutes;
+    hours = hours % 12 || 12;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
 
-  const currentTime = `${hours}:${minutes} ${ampm}`;
+    const timeEl = document.getElementById("time");
 
-  document.getElementById("time").innerText = currentTime;
-}
+    if (timeEl) {
+      timeEl.innerText = `${hours}:${minutes} ${ampm}`;
+    }
+  }
 
-updateTime();
+  updateTime();
+  setInterval(updateTime, 1000);
 
-setInterval(updateTime, 1000);
+
+  /* ---------------- BEAR ---------------- */
+
+  const bear = document.getElementById("bear");
+  const music = document.getElementById("bearMusic");
+
+  if (bear) {
+    bear.addEventListener("mouseenter", () => {
+      bear.src = "bear2.png";
+
+      if (music) {
+        music.currentTime = 0;
+        music.play();
+      }
+    });
+
+    bear.addEventListener("mouseleave", () => {
+      bear.src = "bear1.png";
+
+      if (music) {
+        music.pause();
+        music.currentTime = 0;
+      }
+    });
+  }
 
 
-window.onload = function(){
+  /* ---------------- CAPY ---------------- */
 
-  const capy =
-  document.getElementById("capyImg");
+  const capy = document.getElementById("capyImg");
 
-  const music =
-  document.getElementById("capyMusic");
+  if (capy) {
+    capy.addEventListener("mouseenter", () => {
+      capy.src = "image-removebg-preview (2).png";
+    });
 
-  capy.addEventListener("mouseenter", function(){
+    capy.addEventListener("mouseleave", () => {
+      capy.src = "image-removebg-preview (1).png";
+    });
+  }
 
-    capy.src =
-    "./image-removebg-preview (2).png";
-
-    music.play();
-
-  });
-
-  capy.addEventListener("mouseleave", function(){
-
-    capy.src =
-    "./image-removebg-preview (1).png";
-
-    music.pause();
-
-    music.currentTime = 0;
-
-  });
-
-}
+});
